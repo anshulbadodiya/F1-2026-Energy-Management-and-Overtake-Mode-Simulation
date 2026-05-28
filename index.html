@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 2026 Energy Management Simulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> F1 2026 Energy Management Simulator</h1>
+            <p>Hybrid Power Unit Energy & Overtake Mode Simulation</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Driver 1 Name</label>
+                <input type="text" id="driver1" value="Max Verstappen">
+            </div>
+            <div class="control-group">
+                <label>Driver 1 Team</label>
+                <input type="text" id="team1" value="Red Bull Racing">
+            </div>
+            <div class="control-group">
+                <label>Driver 2 Name</label>
+                <input type="text" id="driver2" value="Lewis Hamilton">
+            </div>
+            <div class="control-group">
+                <label>Driver 2 Team</label>
+                <input type="text" id="team2" value="Ferrari">
+            </div>
+            <div class="control-group">
+                <label>Number of Laps</label>
+                <input type="number" id="laps" value="20" min="1" max="56">
+            </div>
+            <div class="control-group">
+                <label>Track Conditions</label>
+                <select id="conditions">
+                    <option value="normal">Normal</option>
+                    <option value="wet">Wet</option>
+                    <option value="hot">Hot</option>
+                </select>
+            </div>
+            <button onclick="runSimulation()">▶️ RUN SIMULATION</button>
+        </div>
+
+        <div class="dashboard" id="dashboard">
+            <!-- Driver 1 Metrics -->
+            <div class="metric-card">
+                <h3>Driver 1 - Battery</h3>
+                <div class="metric-value" id="driver1-battery">100%</div>
+                <div class="metric-bar">
+                    <div class="metric-fill" id="driver1-battery-bar" style="width: 100%"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Driver 1 - Fuel</h3>
+                <div class="metric-value" id="driver1-fuel">50kg</div>
+                <div class="metric-bar">
+                    <div class="metric-fill" id="driver1-fuel-bar" style="width: 100%"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Driver 1 - Tire Degradation</h3>
+                <div class="metric-value" id="driver1-tires">0%</div>
+                <div class="metric-bar">
+                    <div class="metric-fill" id="driver1-tires-bar" style="width: 0%; background: #f44336;"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Driver 1 - Overtake Uses</h3>
+                <div class="metric-value" id="driver1-overtake">6/6</div>
+                <div class="metric-bar">
+                    <div class="metric-fill" id="driver1-overtake-bar" style="width: 100%; background: #2196f3;"></div>
+                </div>
+            </div>
+
+            <!-- Driver 2 Metrics -->
+            <div class="metric-card">
+                <h3>Driver 2 - Battery</h3>
+                <div class="metric-value" id="driver2-battery">100%</div>
+                <div class="metric-bar">
+                    <div class="metric-fill" id="driver2-battery-bar" style="width: 100%"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Driver 2 - Fuel</h3>
+                <div class="metric-value" id="driver2-fuel">50kg</div>
+                <div class="metric-bar">
+                    <div class="metric-fill" id="driver2-fuel-bar" style="width: 100%"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Driver 2 - Tire Degradation</h3>
+                <div class="metric-value" id="driver2-tires">0%</div>
+                <div class="metric-bar">
+                    <div class="metric-fill" id="driver2-tires-bar" style="width: 0%; background: #f44336;"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Driver 2 - Overtake Uses</h3>
+                <div class="metric-value" id="driver2-overtake">6/6</div>
+                <div class="metric-bar">
+                    <div class="metric-fill" id="driver2-overtake-bar" style="width: 100%; background: #2196f3;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-section">
+            <h2>📊 Race Analysis Charts</h2>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <canvas id="batteryChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="fuelChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="tireChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="powerChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="race-log">
+            <h2>📋 Race Log</h2>
+            <div id="raceLog" style="max-height: 400px; overflow-y: auto;">
+                <p style="color: #999;">Simulation will appear here...</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>✨ F1 2026 Energy Management Simulation - Python Flask Backend</p>
+            <p>Battery: 14 kWh | Fuel: 50 kg | Braking Recovery: 65% | Overtake Uses: 6/race</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

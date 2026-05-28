@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e2761 0%, #0f1535 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.1em;
+    color: #cadcfc;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #1e2761;
+}
+
+input, select {
+    padding: 10px;
+    border: 2px solid #cadcfc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #1e2761;
+}
+
+button {
+    background: linear-gradient(135deg, #1e2761 0%, #2d3e7f 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    grid-column: 1 / -1;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-top: 4px solid #1e2761;
+    transition: transform 0.2s;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.metric-card h3 {
+    color: #1e2761;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.metric-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #1e2761;
+    margin: 10px 0;
+}
+
+.metric-bar {
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.metric-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1e2761 0%, #cadcfc 100%);
+    transition: width 0.3s ease;
+}
+
+.charts-section {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.charts-section h2 {
+    color: #1e2761;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.race-log {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.race-log h2 {
+    color: #1e2761;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.lap-entry {
+    border-left: 4px solid #cadcfc;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.lap-entry strong {
+    color: #1e2761;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.pit-stop {
+    background: #fff3cd;
+    border-left-color: #ff9800;
+    font-weight: 500;
+}
+
+.status-good {
+    color: #4caf50;
+}
+
+.status-warning {
+    color: #ff9800;
+}
+
+.status-danger {
+    color: #f44336;
+}
+
+.footer {
+    text-align: center;
+    color: #cadcfc;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid rgba(202, 220, 252, 0.3);
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .metric-value {
+        font-size: 2em;
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .controls {
+        gap: 10px;
+    }
+
+    .metric-card {
+        padding: 15px;
+    }
+
+    .metric-value {
+        font-size: 1.8em;
+    }
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.metric-card, .chart-container, .lap-entry {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Scrollbar Styling */
+#raceLog::-webkit-scrollbar {
+    width: 8px;
+}
+
+#raceLog::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#raceLog::-webkit-scrollbar-thumb {
+    background: #cadcfc;
+    border-radius: 10px;
+}
+
+#raceLog::-webkit-scrollbar-thumb:hover {
+    background: #1e2761;
+}
+
